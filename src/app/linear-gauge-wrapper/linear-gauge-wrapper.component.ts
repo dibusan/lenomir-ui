@@ -1,0 +1,30 @@
+import {Component, Input, OnInit} from '@angular/core';
+
+@Component({
+  selector: 'app-linear-gauge-wrapper',
+  templateUrl: './linear-gauge-wrapper.component.html',
+  styleUrls: ['./linear-gauge-wrapper.component.css']
+})
+export class LinearGaugeWrapperComponent implements OnInit {
+
+  view: any[] = [400, 200];
+  colorScheme = {
+    domain: ['#5AA454', '#E44D25', '#CFC0BB', '#7aa3e5', '#a8385d', '#aae3f5']
+  };
+
+  value: number;
+  single: any[];
+  @Input() units: string;
+  constructor() {
+    this.value = 9;
+  }
+  // value = 103;
+  // units = 'Websites Scraped';
+
+  onSelect(event) {
+    console.log(event);
+  }
+
+  ngOnInit(): void {
+  }
+}

@@ -1,1 +1,39 @@
-<app-pie-chart-wrapper></app-pie-chart-wrapper>
+
+<div class="container">
+  <div>
+    <div fxLayout="row" fxLayoutGap="20px" fxLayout.gt-md="row"  fxLayoutAlign="space-around center" class="content">
+      <div class="blocks">
+        <form class="example-form">
+          <mat-form-field appearance="outline">
+            <mat-label>New URL</mat-label>
+            <label>
+              <input matInput>
+            </label>
+          </mat-form-field>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div fxLayout="row" fxLayoutAlign="space-evenly center" class="content">
+      <div fxLayout="column">
+        <app-pie-chart-wrapper [single]="urlSummaryForPieChart"></app-pie-chart-wrapper>
+      </div>
+
+      <div fxLayout="column">
+        <app-gauge-wrapper></app-gauge-wrapper>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div fxLayout="column" fxLayoutGap="20px" fxLayout.gt-md="row"  fxLayoutAlign="space-around center" class="content">
+<!--
+        [value]="totalWebsitesSummaryForLinearGauge",-->
+      <app-linear-gauge-wrapper
+        [units]="'sdfsdf'"></app-linear-gauge-wrapper>
+    </div>
+  </div>
+</div>
+
