@@ -19,6 +19,7 @@ import {JobSummary} from '../JobSummary';
   };
 
   job1: JobSummary = {
+    id: 1,
     success: 12,
     failure: 356,
     todo: 10,
@@ -27,6 +28,7 @@ import {JobSummary} from '../JobSummary';
     finished_at: new Date(2020, 0o1, 0o1, 17, 0o3, 0o4),
   };
   job2: JobSummary = {
+    id: 2,
     success: 300,
     failure: 22,
     todo: 20,
@@ -35,6 +37,7 @@ import {JobSummary} from '../JobSummary';
     finished_at: new Date(2020, 0o1, 0o1, 17, 0o3, 0o4),
   };
   job3: JobSummary = {
+    id: 3,
     success: 324,
     failure: 224,
     todo: 30,
@@ -43,6 +46,7 @@ import {JobSummary} from '../JobSummary';
     finished_at: new Date(2020, 0o1, 0o1, 17, 0o3, 0o4),
   };
   LAST_JOB_SUMMARY: JobSummary = {
+    id: 4,
     success: 3,
     failure: 2,
     todo: 23,

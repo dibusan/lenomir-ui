@@ -5,7 +5,7 @@ import {Component, Input, OnChanges, OnInit, SimpleChange, SimpleChanges} from '
   templateUrl: './gauge-wrapper.component.html',
   styleUrls: ['./gauge-wrapper.component.css']
 })
-export class GaugeWrapperComponent implements OnInit, OnChanges {
+export class GaugeWrapperComponent implements OnInit {
   view: any[] = [400, 400];
   units = 'URLs';
 
@@ -31,11 +31,4 @@ export class GaugeWrapperComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
   }
-
-  ngOnChanges(changes: {[propKey: string]: SimpleChange}) {
-    // tslint:disable-next-line:no-debugger
-    debugger;
-    console.log('gauge changed');
-  }
-
 }

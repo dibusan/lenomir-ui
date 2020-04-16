@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ProcessUrlComponent } from './process-url.component';
+import { JobDetailsPageComponent } from './job-details-page.component';
 
-describe('ProcessUrlComponent', () => {
-  let component: ProcessUrlComponent;
-  let fixture: ComponentFixture<ProcessUrlComponent>;
+describe('JobDetailsPageComponent', () => {
+  let component: JobDetailsPageComponent;
+  let fixture: ComponentFixture<JobDetailsPageComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ProcessUrlComponent ]
+      declarations: [ JobDetailsPageComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ProcessUrlComponent);
+    fixture = TestBed.createComponent(JobDetailsPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,4 +1,5 @@
 export interface JobSummary {
+  id: number;
   success: number;
   failure: number;
   todo: number;

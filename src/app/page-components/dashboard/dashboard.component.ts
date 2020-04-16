@@ -1,9 +1,9 @@
 import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
-import {DataService} from '../data/data.service';
+import {DataService} from '../../data/data.service';
 import {DataSource} from '@angular/cdk/collections';
 import {Observable} from 'rxjs';
-import {UrlSummary} from '../UrlSummary';
-import {WebsitesSummary} from '../WebsiteSummary';
+import {UrlSummary} from '../../UrlSummary';
+import {WebsitesSummary} from '../../WebsiteSummary';
 
 @Component({
   selector: 'app-dashboard',
@@ -30,8 +30,6 @@ export class DashboardComponent implements OnInit, OnChanges {
       // only run when property "data" changed
       if (propName === 'lastJobSummaryForGaugeChart') {
         this.lastJobSummaryForGaugeChart = changes[propName].currentValue;
-        console.log('Dashboard Component');
-        console.log(this.lastJobSummaryForGaugeChart);
       }
     }
   }
@@ -81,8 +79,6 @@ export class DashboardComponent implements OnInit, OnChanges {
   }
 
   getUpdatedLastJobResult($event) {
-    // tslint:disable-next-line:no-debugger
-    debugger;
     this.lastJobSummaryForGaugeChart = [
       {
         name: 'Success',
