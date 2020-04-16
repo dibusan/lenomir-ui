@@ -6,7 +6,7 @@ import {Component, Input, OnInit} from '@angular/core';
   styleUrls: ['./pie-chart-wrapper.component.css']
 })
 export class PieChartWrapperComponent implements OnInit {
-  view: any[] = [700, 400];
+  view: any[] = [400, 200];
 
   // options
   label = 'Total URLs scraped';

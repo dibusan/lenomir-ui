@@ -6,3 +6,11 @@ mat-form-field {
 div.container {
   margin-top: 50px;
 }
+
+.column-1 {
+  height: 300px;
+}
+
+app-recent-jobs-table {
+  padding-top: 20px;
+}

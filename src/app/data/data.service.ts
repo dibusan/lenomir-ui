@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {UrlSummary} from '../UrlSummary';
 import {Observable, of} from 'rxjs';
 import {WebsitesSummary} from '../WebsiteSummary';
+import {JobSummary} from '../JobSummary';
 
 @Injectable({
   providedIn: 'root',
@@ -17,6 +18,45 @@ import {WebsitesSummary} from '../WebsiteSummary';
     analyzing: 76
   };
 
+  job1: JobSummary = {
+    success: 12,
+    failure: 356,
+    todo: 10,
+    website: 'example.com',
+    started_at: new Date(2020, 0o1, 0o1, 17, 0o0, 0o1),
+    finished_at: new Date(2020, 0o1, 0o1, 17, 0o3, 0o4),
+  };
+  job2: JobSummary = {
+    success: 300,
+    failure: 22,
+    todo: 20,
+    website: 'example.com',
+    started_at: new Date(2020, 0o1, 0o1, 17, 0o0, 0o1),
+    finished_at: new Date(2020, 0o1, 0o1, 17, 0o3, 0o4),
+  };
+  job3: JobSummary = {
+    success: 324,
+    failure: 224,
+    todo: 30,
+    website: 'example.com',
+    started_at: new Date(2020, 0o1, 0o1, 17, 0o0, 0o1),
+    finished_at: new Date(2020, 0o1, 0o1, 17, 0o3, 0o4),
+  };
+  LAST_JOB_SUMMARY: JobSummary = {
+    success: 3,
+    failure: 2,
+    todo: 23,
+    website: 'example.com',
+    started_at: new Date(2020, 0o1, 0o1, 17, 0o0, 0o1),
+    finished_at: new Date(2020, 0o1, 0o1, 17, 0o3, 0o4),
+  };
+
+  JOB_SUMMARY_LIST: JobSummary[] = [
+    this.job1,
+    this.job2,
+    this.job3
+  ];
+
   constructor() {
   }
 
@@ -26,6 +66,14 @@ import {WebsitesSummary} from '../WebsiteSummary';
 
   getWebsitesSummary(): Observable<WebsitesSummary> {
     return of<WebsitesSummary>(this.WEBSITES_SUMMARY);
+  }
+
+  getLastJobSummary(): Observable<JobSummary> {
+    return of<JobSummary>(this.LAST_JOB_SUMMARY);
+  }
+
+  getJobSummaryList(): Observable<JobSummary[]> {
+    return of<JobSummary[]>(this.JOB_SUMMARY_LIST);
   }
 
   addURL(url) {

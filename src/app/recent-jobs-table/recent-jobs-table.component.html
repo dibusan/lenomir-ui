@@ -1,0 +1,43 @@
+
+<div class="container">
+  <div fxLayout="row" fxLayoutAlign="center center" class="content">
+    <mat-card class="card" >
+      <mat-card-title fxLayout.gt-xs="row" fxLayout.xs="column" fxLayoutAlign="center center">
+        <h3>Recent Jobs</h3>
+      </mat-card-title>
+
+      <mat-card-content>
+          <table mat-table [dataSource]="jobSummaryList" class="mat-elevation-z8">
+            <!-- Website -->
+            <ng-container matColumnDef="website">
+              <th mat-header-cell *matHeaderCellDef> Website </th>
+              <td mat-cell *matCellDef="let jobSummary" > {{jobSummary.website}} </td>
+            </ng-container>
+
+            <!-- Started At -->
+            <ng-container matColumnDef="started_at">
+              <th mat-header-cell *matHeaderCellDef> Started </th>
+              <td mat-cell *matCellDef="let jobSummary">
+                {{
+                  this.datepipe.transform(jobSummary.started_at, 'yyyy/MM/dd - HH:MM:ss')
+                }}
+              </td>
+            </ng-container>
+
+            <!-- Todo -->
+            <ng-container matColumnDef="todo">
+              <th mat-header-cell *matHeaderCellDef> To Do </th>
+              <td mat-cell *matCellDef="let jobSummary"> {{jobSummary.todo}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row
+                *matRowDef="let jobSummary; columns: displayedColumns;"
+                class="element-row"
+                (mouseenter)="updateMostRecentJob(jobSummary);"
+                (click)="onRowClick(jobSummary)"></tr>
+          </table>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

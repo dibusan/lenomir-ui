@@ -12,14 +12,10 @@ export class LinearGaugeWrapperComponent implements OnInit {
     domain: ['#5AA454', '#E44D25', '#CFC0BB', '#7aa3e5', '#a8385d', '#aae3f5']
   };
 
-  value: number;
-  single: any[];
+  @Input() value: number;
   @Input() units: string;
   constructor() {
-    this.value = 9;
   }
-  // value = 103;
-  // units = 'Websites Scraped';
 
   onSelect(event) {
     console.log(event);

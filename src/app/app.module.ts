@@ -15,6 +15,8 @@ import { PieChartWrapperComponent } from './pie-chart-wrapper/pie-chart-wrapper.
 import { LinearGaugeWrapperComponent } from './linear-gauge-wrapper/linear-gauge-wrapper.component';
 import { GaugeWrapperComponent } from './gauge-wrapper/gauge-wrapper.component';
 import {DataService} from './data/data.service';
+import { RecentJobsTableComponent } from './recent-jobs-table/recent-jobs-table.component';
+import {DatePipe} from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,8 @@ import {DataService} from './data/data.service';
     DashboardComponent,
     PieChartWrapperComponent,
     LinearGaugeWrapperComponent,
-    GaugeWrapperComponent
+    GaugeWrapperComponent,
+    RecentJobsTableComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +37,7 @@ import {DataService} from './data/data.service';
     NgxChartsModule,
     AppRouters
   ],
-  providers: [DataService],
+  providers: [DataService, DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
