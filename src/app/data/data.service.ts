@@ -1,87 +1,51 @@
-import { Injectable } from '@angular/core';
-import {UrlSummary} from '../UrlSummary';
+import {Injectable} from '@angular/core';
+import {UrlSummary} from '../interfaces/UrlSummary';
 import {Observable, of} from 'rxjs';
-import {WebsitesSummary} from '../WebsiteSummary';
-import {JobSummary} from '../JobSummary';
+import {WebsitesSummary} from '../interfaces/WebsiteSummary';
+import {JobSummary} from '../interfaces/JobSummary';
+import {JobRecord} from '../interfaces/JobRecord';
+import {
+  JOB_SUMMARY_LIST, jobFullRecord1, jobFullRecord2, jobFullRecord3, LAST_JOB_SUMMARY, URL_SUMMARY, WEBSITES_SUMMARY
+} from './constant';
 
 @Injectable({
   providedIn: 'root',
 })export class DataService {
-
-  WEBSITES_SUMMARY: WebsitesSummary = {
-    total: 25
-  };
-
-  URL_SUMMARY: UrlSummary = {
-    marketable: 3,
-    clean: 19,
-    analyzing: 76
-  };
-
-  job1: JobSummary = {
-    id: 1,
-    success: 12,
-    failure: 356,
-    todo: 10,
-    website: 'example.com',
-    started_at: new Date(2020, 0o1, 0o1, 17, 0o0, 0o1),
-    finished_at: new Date(2020, 0o1, 0o1, 17, 0o3, 0o4),
-  };
-  job2: JobSummary = {
-    id: 2,
-    success: 300,
-    failure: 22,
-    todo: 20,
-    website: 'example.com',
-    started_at: new Date(2020, 0o1, 0o1, 17, 0o0, 0o1),
-    finished_at: new Date(2020, 0o1, 0o1, 17, 0o3, 0o4),
-  };
-  job3: JobSummary = {
-    id: 3,
-    success: 324,
-    failure: 224,
-    todo: 30,
-    website: 'example.com',
-    started_at: new Date(2020, 0o1, 0o1, 17, 0o0, 0o1),
-    finished_at: new Date(2020, 0o1, 0o1, 17, 0o3, 0o4),
-  };
-  LAST_JOB_SUMMARY: JobSummary = {
-    id: 4,
-    success: 3,
-    failure: 2,
-    todo: 23,
-    website: 'example.com',
-    started_at: new Date(2020, 0o1, 0o1, 17, 0o0, 0o1),
-    finished_at: new Date(2020, 0o1, 0o1, 17, 0o3, 0o4),
-  };
-
-  JOB_SUMMARY_LIST: JobSummary[] = [
-    this.job1,
-    this.job2,
-    this.job3
-  ];
-
   constructor() {
   }
 
   getUrlSummary(): Observable<UrlSummary> {
-    return of<UrlSummary>(this.URL_SUMMARY);
+    return of<UrlSummary>(URL_SUMMARY);
   }
 
   getWebsitesSummary(): Observable<WebsitesSummary> {
-    return of<WebsitesSummary>(this.WEBSITES_SUMMARY);
+    return of<WebsitesSummary>(WEBSITES_SUMMARY);
   }
 
   getLastJobSummary(): Observable<JobSummary> {
-    return of<JobSummary>(this.LAST_JOB_SUMMARY);
+    return of<JobSummary>(LAST_JOB_SUMMARY);
   }
 
   getJobSummaryList(): Observable<JobSummary[]> {
-    return of<JobSummary[]>(this.JOB_SUMMARY_LIST);
+    return of<JobSummary[]>(JOB_SUMMARY_LIST);
   }
 
+
+  getJobRecord(jobId: number): Observable<JobRecord> {
+
+    const JOB_RECORD_LIST: JobRecord[] = [
+      jobFullRecord1,
+      jobFullRecord2,
+      jobFullRecord3,
+    ];
+    const res = JOB_RECORD_LIST.filter(fullJob => jobId === fullJob.summary.id);
+    if (res.length > 0){
+      return of<JobRecord>(res[0]);
+    }
+    throw new Error(`Job with id '${jobId}' does not exist`);
+  }
   addURL(url) {
-    this.URL_SUMMARY.analyzing += 1;
+    URL_SUMMARY.analyzing += 1;
   }
 
 }

@@ -2,8 +2,8 @@ import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {DataService} from '../../data/data.service';
 import {DataSource} from '@angular/cdk/collections';
 import {Observable} from 'rxjs';
-import {UrlSummary} from '../../UrlSummary';
-import {WebsitesSummary} from '../../WebsiteSummary';
+import {UrlSummary} from '../../interfaces/UrlSummary';
+import {WebsitesSummary} from '../../interfaces/WebsiteSummary';
 
 @Component({
   selector: 'app-dashboard',

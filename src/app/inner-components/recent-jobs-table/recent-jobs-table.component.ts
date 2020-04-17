@@ -2,7 +2,7 @@ import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges
 import {DataSource} from '@angular/cdk/collections';
 import {DataService} from '../../data/data.service';
 import {Observable} from 'rxjs';
-import {JobSummary} from '../../JobSummary';
+import {JobSummary} from '../../interfaces/JobSummary';
 import {DatePipe} from '@angular/common';
 import {Router} from '@angular/router';
 
