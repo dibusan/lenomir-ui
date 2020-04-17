@@ -1,5 +1,31 @@
-<p>job-details-page works!</p>
 
-<p>
-  {{recordStr}}
-</p>
+<div class="container">
+  <div id="card-wrapper" fxLayout="row" fxLayoutAlign="center center" class="content">
+
+    <mat-card class="card" >
+      <mat-card-title fxLayout.gt-xs="row" fxLayout.xs="column" fxLayoutAlign="center center">
+        <h3>Job Info </h3>
+      </mat-card-title>
+
+      <mat-card-content>
+        <p>Page URL: <strong>{{fullJobRecord.urls[0].url}}</strong> </p>
+
+        <h4>Job Summary</h4>
+        <ngx-json-viewer [json]="fullJobRecord.summary" [expanded]="false"></ngx-json-viewer>
+      </mat-card-content>
+
+
+      <mat-card-title fxLayout.gt-xs="row" fxLayout.xs="column" fxLayoutAlign="center center">
+        <h3>Extracted Data</h3>
+      </mat-card-title>
+
+      <mat-card-content>
+        <mat-tab-group>
+          <mat-tab *ngFor="let data of fullJobRecord.urls[0].extractedData; index as i" label="Object {{i}}">
+            <ngx-json-viewer [json]="data" [expanded]="false"></ngx-json-viewer>
+          </mat-tab>
+        </mat-tab-group>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

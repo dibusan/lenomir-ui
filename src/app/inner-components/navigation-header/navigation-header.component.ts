@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavigationHeaderComponent implements OnInit {
 
+  loggedin = true;
   constructor() { }
 
   ngOnInit(): void {
