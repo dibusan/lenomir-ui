@@ -51,12 +51,6 @@ export let LAST_JOB_SUMMARY: JobSummary = {
   finished_at: new Date(2020, 0o1, 0o1, 17, 0o3, 0o4),
 };
 
-export let JOB_SUMMARY_LIST: JobSummary[] = [
-  jobSummary1,
-  jobSummary2,
-  jobSummary3
-];
-
 export let urlRecord1: UrlRecord = {
   url: 'https://www.cde.ca.gov/sdprofile/details.aspx?cds=39103970000000',
   extractedData: [

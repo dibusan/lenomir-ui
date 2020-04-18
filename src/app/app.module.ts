@@ -19,6 +19,7 @@ import {DatePipe} from '@angular/common';
 import { JobDetailsPageComponent } from './page-components/job-details-page/job-details-page.component';
 import { NgxJsonViewerModule } from 'ngx-json-viewer';
 import {MatTabsModule} from '@angular/material/tabs';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import {MatTabsModule} from '@angular/material/tabs';
     NgxJsonViewerModule,
     AppRouters,
     MatTabsModule,
+    FormsModule
   ],
   providers: [DataService, DatePipe],
   bootstrap: [AppComponent]

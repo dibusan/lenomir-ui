@@ -3,11 +3,11 @@
 
   <div fxLayout="row" fxLayoutGap="20px"  fxLayout.gt-md="row"  fxLayoutAlign="space-around center" class="content">
     <div class="blocks">
-      <form class="example-form">
+      <form #f="ngForm" class="example-form" (ngSubmit)="startNewJob(f)">
         <mat-form-field appearance="outline">
           <mat-label>New URL</mat-label>
           <label>
-            <input matInput>
+            <input name="url" ngModel required #url="ngModel" matInput>
           </label>
         </mat-form-field>
       </form>

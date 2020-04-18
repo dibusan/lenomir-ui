@@ -1,9 +1,11 @@
-import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnChanges, OnDestroy, OnInit, SimpleChanges} from '@angular/core';
 import {DataService} from '../../data/data.service';
 import {DataSource} from '@angular/cdk/collections';
-import {Observable} from 'rxjs';
+import {Observable, Subscription} from 'rxjs';
 import {UrlSummary} from '../../interfaces/UrlSummary';
 import {WebsitesSummary} from '../../interfaces/WebsiteSummary';
+import {NgForm} from '@angular/forms';
+import {JobSummary} from '../../interfaces/JobSummary';
 
 @Component({
   selector: 'app-dashboard',
@@ -26,11 +28,21 @@ export class DashboardComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
+    // tslint:disable-next-line:no-debugger
+    debugger;
     for (const propName in changes) {
       // only run when property "data" changed
       if (propName === 'lastJobSummaryForGaugeChart') {
         this.lastJobSummaryForGaugeChart = changes[propName].currentValue;
       }
+    }
+  }
+
+  startNewJob(f: NgForm): void {
+    if (!f.valid){
+      console.error(`Url ${f.value.url} is invalid`);
+    }else{
+      this.dataService.startNewJob(f.value.url);
     }
   }
 

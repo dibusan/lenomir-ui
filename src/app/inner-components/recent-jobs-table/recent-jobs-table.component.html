@@ -1,13 +1,14 @@
 
 <div class="container">
-  <div fxLayout="row" fxLayoutAlign="center center" class="content">
+  <div fxLayout="row" fxLayoutAlign="center center" class="content" *ngIf="dataService.JOB_SUMMARY_LIST.length">
     <mat-card class="card" >
       <mat-card-title fxLayout.gt-xs="row" fxLayout.xs="column" fxLayoutAlign="center center">
         <h3>Recent Jobs</h3>
       </mat-card-title>
 
+      {{dataService.JOB_SUMMARY_LIST.length}}
       <mat-card-content>
-          <table mat-table [dataSource]="jobSummaryList" class="mat-elevation-z8">
+          <table mat-table [dataSource]="dataService.JOB_SUMMARY_LIST" class="mat-elevation-z8">
             <!-- Website -->
             <ng-container matColumnDef="website">
               <th mat-header-cell *matHeaderCellDef> Website </th>
