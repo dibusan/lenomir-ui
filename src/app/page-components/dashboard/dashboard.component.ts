@@ -22,7 +22,6 @@ export class DashboardComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
     this.unitsWebsitesSummaryForLinearGauge = 'Websites Scraped';
-    this.getUrlSummary();
     this.getWebsitesSummary();
     this.getLastJobSummary();
   }
@@ -44,25 +43,6 @@ export class DashboardComponent implements OnInit, OnChanges {
     }else{
       this.dataService.startNewJob(f.value.url);
     }
-  }
-
-  getUrlSummary(): void {
-    this.dataService.getUrlSummary().subscribe((sum) => {
-      this.urlSummaryForPieChart = [
-        {
-          name: 'Marketable',
-          value: sum.marketable
-        },
-        {
-          name: 'Clean',
-          value: sum.clean
-        },
-        {
-          name: 'Analyzing',
-          value: sum.analyzing
-        }
-      ];
-    });
   }
 
   getWebsitesSummary(): void {

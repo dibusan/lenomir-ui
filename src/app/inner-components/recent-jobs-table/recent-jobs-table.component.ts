@@ -24,9 +24,9 @@ export class RecentJobsTableComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    setInterval(() => {
-      this.table.renderRows();
-    }, 1000);
+    this.table.renderRows();
+    // setInterval(() => {
+    // }, 1000);
   }
 
   updateMostRecentJob(elem: JobSummary): void {

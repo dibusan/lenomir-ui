@@ -11,7 +11,7 @@ export let WEBSITES_SUMMARY: WebsitesSummary = {
 export let URL_SUMMARY: UrlSummary = {
   marketable: 3,
   clean: 19,
-  analyzing: 76
+  analizing: 76
 };
 
 export let jobSummary1: JobSummary = {

@@ -14,11 +14,13 @@ import {
   URL_SUMMARY,
   WEBSITES_SUMMARY
 } from './constant';
+import {HttpClient} from '@angular/common/http';
+import {Url} from 'url';
 
 @Injectable({
   providedIn: 'root',
 })export class DataService {
-  constructor() {
+  constructor(private http: HttpClient) {
   }
 
   JOB_RECORD_LIST: JobRecord[] = [
@@ -33,8 +35,29 @@ import {
   ];
 
   getUrlSummary(): Observable<UrlSummary> {
-    return of<UrlSummary>(URL_SUMMARY);
+    const url = 'https://lenomir-core-dot-lenomir.appspot.com/pages/summary';
+    return this.http.get<UrlSummary>(url);
   }
+  //
+  // updateUrlSummary() {
+  //   const url = 'https://lenomir-core-dot-lenomir.appspot.com/pages/summary';
+  //   // options: {
+  //   //     headers?: HttpHeaders | {[header: string]: string | string[]},
+  //   //     observe?: 'body' | 'events' | 'response',
+  //   //     params?: HttpParams|{[param: string]: string | string[]},
+  //   //     reportProgress?: boolean,
+  //   //     responseType?: 'arraybuffer'|'blob'|'json'|'text',
+  //   //     withCredentials?: boolean,
+  //   //   }
+  //   return this.http.get(url);
+  //   //   .subscribe((data: UrlSummary) => {
+  //   //   this.urlSummary = data;
+  //   //   // tslint:disable-next-line:no-debugger
+  //   //   debugger;
+  //   // }, () => {
+  //   //   this.urlSummary = URL_SUMMARY;
+  //   // });
+  // }
 
   getWebsitesSummary(): Observable<WebsitesSummary> {
     return of<WebsitesSummary>(WEBSITES_SUMMARY);
@@ -90,7 +113,7 @@ import {
   }
 
   addURL(url) {
-    URL_SUMMARY.analyzing += 1;
+    // URL_SUMMARY.analyzing += 1;
   }
 
 }
