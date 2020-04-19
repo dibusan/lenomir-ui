@@ -17,33 +17,33 @@ export let URL_SUMMARY: UrlSummary = {
 export let jobSummary1: JobSummary = {
   id: 1,
   url: 'example.com',
-  started_at: new Date(2020, 0o1, 0o1, 17, 0o0, 0o1),
-  finished_at: new Date(2020, 0o1, 0o1, 17, 0o3, 0o4),
-  status: 1,
+  created_at: new Date(2020, 0o1, 0o1, 17, 0o0, 0o1),
+  updated_at: new Date(2020, 0o1, 0o1, 17, 0o3, 0o4),
+  last_scrape_status: 1,
   mime: 'text/html'
 };
 export let jobSummary2: JobSummary = {
   id: 1,
   url: 'example.com',
-  started_at: new Date(2020, 0o1, 0o1, 17, 0o0, 0o1),
-  finished_at: new Date(2020, 0o1, 0o1, 17, 0o3, 0o4),
-  status: 1,
+  created_at: new Date(2020, 0o1, 0o1, 17, 0o0, 0o1),
+  updated_at: new Date(2020, 0o1, 0o1, 17, 0o3, 0o4),
+  last_scrape_status: 1,
   mime: 'text/html'
 };
 export let jobSummary3: JobSummary = {
   id: 1,
   url: 'example.com',
-  started_at: new Date(2020, 0o1, 0o1, 17, 0o0, 0o1),
-  finished_at: new Date(2020, 0o1, 0o1, 17, 0o3, 0o4),
-  status: 1,
+  created_at: new Date(2020, 0o1, 0o1, 17, 0o0, 0o1),
+  updated_at: new Date(2020, 0o1, 0o1, 17, 0o3, 0o4),
+  last_scrape_status: 1,
   mime: 'text/html'
 };
 export let LAST_JOB_SUMMARY: JobSummary = {
   id: 1,
   url: 'example.com',
-  started_at: new Date(2020, 0o1, 0o1, 17, 0o0, 0o1),
-  finished_at: new Date(2020, 0o1, 0o1, 17, 0o3, 0o4),
-  status: 1,
+  created_at: new Date(2020, 0o1, 0o1, 17, 0o0, 0o1),
+  updated_at: new Date(2020, 0o1, 0o1, 17, 0o3, 0o4),
+  last_scrape_status: 1,
   mime: 'text/html'
 };
 

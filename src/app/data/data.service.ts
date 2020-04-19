@@ -49,19 +49,8 @@ import {map} from 'rxjs/operators';
 
   getJobSummaryList(): Observable<JobSummary[]> {
     const apiUrl = 'https://lenomir-core-dot-lenomir.appspot.com/pages/recent';
-    const test: any[] = [
-      {
-        a: 1,
-        b: 2
-      }
-    ];
-    of(test).pipe(
-      map(summary => {
-        
-      })
-    );
-    return of<JobSummary[]>(this.JOB_SUMMARY_LIST);
-    // return this.http.get<JobSummary[]>(apiUrl);
+    // return of<JobSummary[]>(this.JOB_SUMMARY_LIST);
+    return this.http.get<JobSummary[]>(apiUrl);
   }
 
 
