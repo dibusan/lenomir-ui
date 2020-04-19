@@ -11,11 +11,10 @@ import {
   jobSummary1,
   jobSummary2, jobSummary3,
   LAST_JOB_SUMMARY,
-  URL_SUMMARY,
-  WEBSITES_SUMMARY
 } from './constant';
 import {HttpClient} from '@angular/common/http';
 import {Url} from 'url';
+import {map} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -38,29 +37,10 @@ import {Url} from 'url';
     const url = 'https://lenomir-core-dot-lenomir.appspot.com/pages/summary';
     return this.http.get<UrlSummary>(url);
   }
-  //
-  // updateUrlSummary() {
-  //   const url = 'https://lenomir-core-dot-lenomir.appspot.com/pages/summary';
-  //   // options: {
-  //   //     headers?: HttpHeaders | {[header: string]: string | string[]},
-  //   //     observe?: 'body' | 'events' | 'response',
-  //   //     params?: HttpParams|{[param: string]: string | string[]},
-  //   //     reportProgress?: boolean,
-  //   //     responseType?: 'arraybuffer'|'blob'|'json'|'text',
-  //   //     withCredentials?: boolean,
-  //   //   }
-  //   return this.http.get(url);
-  //   //   .subscribe((data: UrlSummary) => {
-  //   //   this.urlSummary = data;
-  //   //   // tslint:disable-next-line:no-debugger
-  //   //   debugger;
-  //   // }, () => {
-  //   //   this.urlSummary = URL_SUMMARY;
-  //   // });
-  // }
 
   getWebsitesSummary(): Observable<WebsitesSummary> {
-    return of<WebsitesSummary>(WEBSITES_SUMMARY);
+    const url = 'https://lenomir-core-dot-lenomir.appspot.com/websites/count';
+    return this.http.get<WebsitesSummary>(url);
   }
 
   getLastJobSummary(): Observable<JobSummary> {
@@ -68,7 +48,20 @@ import {Url} from 'url';
   }
 
   getJobSummaryList(): Observable<JobSummary[]> {
+    const apiUrl = 'https://lenomir-core-dot-lenomir.appspot.com/pages/recent';
+    const test: any[] = [
+      {
+        a: 1,
+        b: 2
+      }
+    ];
+    of(test).pipe(
+      map(summary => {
+        
+      })
+    );
     return of<JobSummary[]>(this.JOB_SUMMARY_LIST);
+    // return this.http.get<JobSummary[]>(apiUrl);
   }
 
 
@@ -80,36 +73,20 @@ import {Url} from 'url';
     throw new Error(`Job with id '${jobId}' does not exist`);
   }
 
-  startNewJob(url){
-    const jobFullRecord: JobRecord = {
-      summary: {
-        id: Math.random() * 100000,
-        finished_at: new Date(Date.now()),
-        started_at: new Date(Date.now()),
-        failure: 0,
-        success: 1,
-        todo: 0,
-        website: url,
-      },
-      urls: [
-        {
-          url,
-          extractedData: [
-            {
-              silly_object: 1,
-              silly_objectB: 1,
-              silly_objectC: 1,
-              silly_objectD: 1,
-            }
-          ]
-        }
-      ]
+  startNewJob(newEndpoint){
+    const apiUrl = 'https://lenomir-core-dot-lenomir.appspot.com/mine';
+    const body = {
+      ids: [],
+      urls: [newEndpoint]
     };
-    this.JOB_RECORD_LIST.push(jobFullRecord);
-    const jobSummary: JobSummary = jobFullRecord.summary;
-    this.JOB_SUMMARY_LIST.push(jobSummary);
-    console.log('New Job');
-    console.log(this.JOB_SUMMARY_LIST);
+
+    this.http.post(apiUrl, body).subscribe((data) => {
+      // tslint:disable-next-line:no-debugger
+      debugger;
+    }, (err) => {
+      // tslint:disable-next-line:no-debugger
+      debugger;
+    });
   }
 
   addURL(url) {

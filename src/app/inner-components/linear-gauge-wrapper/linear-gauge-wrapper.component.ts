@@ -1,4 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {DataService} from '../../data/data.service';
+import {WebsitesSummary} from '../../interfaces/WebsiteSummary';
 
 @Component({
   selector: 'app-linear-gauge-wrapper',
@@ -12,9 +14,10 @@ export class LinearGaugeWrapperComponent implements OnInit {
     domain: ['#5AA454', '#E44D25', '#CFC0BB', '#7aa3e5', '#a8385d', '#aae3f5']
   };
 
-  @Input() value: number;
-  @Input() units: string;
-  constructor() {
+  value: number;
+  units = 'Websites Scraped';
+  constructor(private dataService: DataService) {
+    this.value = 0;
   }
 
   onSelect(event) {
@@ -22,5 +25,15 @@ export class LinearGaugeWrapperComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.showChart();
+  }
+
+  showChart() {
+    this.dataService.getWebsitesSummary().subscribe((data: WebsitesSummary) => {
+      this.value = data.count;
+    }, (err) => {
+      console.error('Error at Website Summary component');
+      console.error(err);
+    });
   }
 }

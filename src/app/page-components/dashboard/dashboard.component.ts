@@ -1,11 +1,6 @@
 import {ChangeDetectionStrategy, Component, OnChanges, OnDestroy, OnInit, SimpleChanges} from '@angular/core';
 import {DataService} from '../../data/data.service';
-import {DataSource} from '@angular/cdk/collections';
-import {Observable, Subscription} from 'rxjs';
-import {UrlSummary} from '../../interfaces/UrlSummary';
-import {WebsitesSummary} from '../../interfaces/WebsiteSummary';
-import {NgForm} from '@angular/forms';
-import {JobSummary} from '../../interfaces/JobSummary';
+import {FormControl, NgForm, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-dashboard',
@@ -13,22 +8,16 @@ import {JobSummary} from '../../interfaces/JobSummary';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit, OnChanges {
-  totalWebsitesSummaryForLinearGauge: number;
-  unitsWebsitesSummaryForLinearGauge: string;
-  urlSummaryForPieChart: any;
-  lastJobSummaryForGaugeChart: any[];
 
-  constructor(private dataService: DataService) { }
+  lastJobSummaryForGaugeChart: any[];
+  urlSubmissionMessage: string;
+  constructor(private dataService: DataService) {}
 
   ngOnInit(): void {
-    this.unitsWebsitesSummaryForLinearGauge = 'Websites Scraped';
-    this.getWebsitesSummary();
     this.getLastJobSummary();
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    // tslint:disable-next-line:no-debugger
-    debugger;
     for (const propName in changes) {
       // only run when property "data" changed
       if (propName === 'lastJobSummaryForGaugeChart') {
@@ -38,35 +27,21 @@ export class DashboardComponent implements OnInit, OnChanges {
   }
 
   startNewJob(f: NgForm): void {
-    if (!f.valid){
-      console.error(`Url ${f.value.url} is invalid`);
-    }else{
+    // tslint:disable-next-line:no-debugger
+    debugger;
+    if (f.valid){
       this.dataService.startNewJob(f.value.url);
+      this.urlSubmissionMessage = `Successfully submitter url ${f.value.url}`;
+    } else {
+      this.urlSubmissionMessage = `Url '${f.value.url}' is invalid`;
+      console.error(this.urlSubmissionMessage);
     }
-  }
-
-  getWebsitesSummary(): void {
-    this.dataService.getWebsitesSummary().subscribe((sum) => {
-      this.totalWebsitesSummaryForLinearGauge = sum.total;
-    });
+    f.resetForm();
   }
 
   getLastJobSummary(): void {
     this.dataService.getLastJobSummary().subscribe((sum) => {
-      this.lastJobSummaryForGaugeChart = [
-        {
-          name: 'Success',
-          value: sum.success
-        },
-        {
-          name: 'Failure',
-          value: sum.failure
-        },
-        {
-          name: 'TODO',
-          value: sum.todo
-        }
-      ];
+      this.lastJobSummaryForGaugeChart = [];
     });
   }
 

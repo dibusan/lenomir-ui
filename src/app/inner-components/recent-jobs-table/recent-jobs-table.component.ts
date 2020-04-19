@@ -14,9 +14,18 @@ import {MatTable} from '@angular/material/table';
 })
 export class RecentJobsTableComponent implements OnInit {
 
-  @Output() mostRecentJobEmitter = new EventEmitter();
-  @ViewChild(MatTable) table: MatTable<any>;
-  displayedColumns: string[] = ['website', 'started_at', 'todo'];
+  table: MatTable<any>;
+  tableData: JobSummary[];
+  /*  export interface JobSummary {
+        id: number;
+        url: string;
+        mime: string;
+        started_at: Date;
+        finished_at: Date;
+        status: number;
+      } */
+
+  displayedColumns: string[] = ['url', 'mime', 'started_at', 'finished_at', 'status'];
   constructor(
     private router: Router,
     public dataService: DataService,
@@ -24,13 +33,16 @@ export class RecentJobsTableComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.table.renderRows();
+    this.loadTableData();
+    // this.table.renderRows();
     // setInterval(() => {
     // }, 1000);
   }
 
-  updateMostRecentJob(elem: JobSummary): void {
-    this.mostRecentJobEmitter.emit(elem);
+  loadTableData() {
+    this.dataService.getJobSummaryList().subscribe((data: JobSummary[]) => {
+      this.tableData = data;
+    });
   }
 
   onRowClick(elem: JobSummary): void {

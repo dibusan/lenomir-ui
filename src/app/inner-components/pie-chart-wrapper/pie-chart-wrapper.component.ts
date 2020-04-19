@@ -48,11 +48,11 @@ export class PieChartWrapperComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.showChart();
-    IntervalObservable.create(3000)
-      .takeWhile(() => this.alive) // only fires when component is alive
-      .subscribe(() => {
-        this.showChart();
-      });
+    // IntervalObservable.create(3000)
+    //   .takeWhile(() => this.alive) // only fires when component is alive
+    //   .subscribe(() => {
+    //     this.showChart();
+    //   });
   }
 
   ngOnDestroy() {

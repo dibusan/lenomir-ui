@@ -1,41 +1,34 @@
 
 <div class="container">
-  <div fxLayout="row" fxLayoutAlign="center center" class="content" *ngIf="dataService.JOB_SUMMARY_LIST.length">
+  <div fxLayout="row" fxLayoutAlign="center center" class="content">
     <mat-card class="card" >
       <mat-card-title fxLayout.gt-xs="row" fxLayout.xs="column" fxLayoutAlign="center center">
         <h3>Recent Jobs</h3>
       </mat-card-title>
 
-      {{dataService.JOB_SUMMARY_LIST.length}}
+      {{this.tableData.length}}
       <mat-card-content>
-          <table mat-table [dataSource]="dataService.JOB_SUMMARY_LIST" class="mat-elevation-z8">
-            <!-- Website -->
-            <ng-container matColumnDef="website">
-              <th mat-header-cell *matHeaderCellDef> Website </th>
-              <td mat-cell *matCellDef="let jobSummary" > {{jobSummary.website}} </td>
-            </ng-container>
+          <table mat-table [dataSource]="this.tableData" class="mat-elevation-z8">
 
-            <!-- Started At -->
-            <ng-container matColumnDef="started_at">
-              <th mat-header-cell *matHeaderCellDef> Started </th>
-              <td mat-cell *matCellDef="let jobSummary">
-                {{
-                  this.datepipe.transform(jobSummary.started_at, 'yyyy/MM/dd - HH:MM:ss')
-                }}
+            <ng-container *ngFor="let col of displayedColumns; let colIndex = index" matColumnDef="{{col}}">
+              <th mat-header-cell *matHeaderCellDef> {{col|titlecase}} </th>
+
+              <td mat-cell *matCellDef="let element" >
+                <p *ngIf="col.indexOf('_at') != -1">
+                  {{this.datepipe.transform(element[col], 'yyyy/MM/dd - HH:MM:ss')}}
+                </p>
+
+                <p *ngIf="col.indexOf('_at') == -1">
+                  {{element[col]}}
+                </p>
+
               </td>
-            </ng-container>
-
-            <!-- Todo -->
-            <ng-container matColumnDef="todo">
-              <th mat-header-cell *matHeaderCellDef> To Do </th>
-              <td mat-cell *matCellDef="let jobSummary"> {{jobSummary.todo}} </td>
             </ng-container>
 
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <tr mat-row
                 *matRowDef="let jobSummary; columns: displayedColumns;"
                 class="element-row"
-                (mouseenter)="updateMostRecentJob(jobSummary);"
                 (click)="onRowClick(jobSummary)"></tr>
           </table>
       </mat-card-content>

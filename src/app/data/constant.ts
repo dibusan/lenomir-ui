@@ -5,7 +5,7 @@ import {JobRecord, UrlRecord} from '../interfaces/JobRecord';
 
 
 export let WEBSITES_SUMMARY: WebsitesSummary = {
-  total: 25
+  count: 25
 };
 
 export let URL_SUMMARY: UrlSummary = {
@@ -16,39 +16,35 @@ export let URL_SUMMARY: UrlSummary = {
 
 export let jobSummary1: JobSummary = {
   id: 1,
-  success: 12,
-  failure: 356,
-  todo: 10,
-  website: 'example.com',
+  url: 'example.com',
   started_at: new Date(2020, 0o1, 0o1, 17, 0o0, 0o1),
   finished_at: new Date(2020, 0o1, 0o1, 17, 0o3, 0o4),
+  status: 1,
+  mime: 'text/html'
 };
 export let jobSummary2: JobSummary = {
-  id: 2,
-  success: 300,
-  failure: 22,
-  todo: 20,
-  website: 'example.com',
+  id: 1,
+  url: 'example.com',
   started_at: new Date(2020, 0o1, 0o1, 17, 0o0, 0o1),
   finished_at: new Date(2020, 0o1, 0o1, 17, 0o3, 0o4),
+  status: 1,
+  mime: 'text/html'
 };
 export let jobSummary3: JobSummary = {
-  id: 3,
-  success: 324,
-  failure: 224,
-  todo: 30,
-  website: 'example.com',
+  id: 1,
+  url: 'example.com',
   started_at: new Date(2020, 0o1, 0o1, 17, 0o0, 0o1),
   finished_at: new Date(2020, 0o1, 0o1, 17, 0o3, 0o4),
+  status: 1,
+  mime: 'text/html'
 };
 export let LAST_JOB_SUMMARY: JobSummary = {
-  id: 4,
-  success: 3,
-  failure: 2,
-  todo: 23,
-  website: 'example.com',
+  id: 1,
+  url: 'example.com',
   started_at: new Date(2020, 0o1, 0o1, 17, 0o0, 0o1),
   finished_at: new Date(2020, 0o1, 0o1, 17, 0o3, 0o4),
+  status: 1,
+  mime: 'text/html'
 };
 
 export let urlRecord1: UrlRecord = {
