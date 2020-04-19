@@ -1,23 +1,24 @@
 
 <div class="container">
-  <div fxLayout="row" fxLayoutGap="20px"  fxLayout.gt-md="row"  fxLayoutAlign="space-around center" class="content">
-    <div class="blocks">
-      <form #f="ngForm" class="example-form" (ngSubmit)="startNewJob(f)">
-        <mat-form-field appearance="outline">
-          <mat-label>New URL</mat-label>
-          <label>
-            <input name="url" ngModel required #url="ngModel" matInput>
-          </label>
-        </mat-form-field>
-      </form>
-      <div>{{this.urlSubmissionMessage}}</div>
-    </div>
-  </div>
-
   <div fxLayout="row" fxLayoutGap="10%">
     <div fxFlexOffset="5%" fxLayout="column">
+
       <div class="column-1">
         <app-pie-chart-wrapper></app-pie-chart-wrapper>
+      </div>
+
+      <div fxLayout="row" fxLayoutGap="20px"  fxLayout.gt-md="row"  fxLayoutAlign="space-around center" class="content">
+        <div class="blocks">
+          <form #f="ngForm" class="example-form" (ngSubmit)="startNewJob(f)">
+            <mat-form-field appearance="outline">
+              <mat-label>New URL</mat-label>
+              <label>
+                <input name="url" ngModel required #url="ngModel" matInput>
+              </label>
+            </mat-form-field>
+          </form>
+          <div>{{this.urlSubmissionMessage}}</div>
+        </div>
       </div>
 
       <div class="column-1">
@@ -28,6 +29,7 @@
     <div fxLayout="column">
       <app-recent-jobs-table></app-recent-jobs-table>
     </div>
+
 
     <div class="column-1">
 <!--      <app-gauge-wrapper [single]="lastJobSummaryForGaugeChart"></app-gauge-wrapper>-->
