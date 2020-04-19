@@ -1,6 +1,6 @@
 
 <div class="container">
-  <div id="card-wrapper" fxLayout="row" fxLayoutAlign="center center" class="content">
+  <div *ngIf="fullJobRecord" id="card-wrapper" fxLayout="row" fxLayoutAlign="center center" class="content">
 
     <mat-card class="card" >
       <mat-card-title fxLayout.gt-xs="row" fxLayout.xs="column" fxLayoutAlign="center center">
@@ -8,10 +8,14 @@
       </mat-card-title>
 
       <mat-card-content>
-        <p>Page URL: <strong>{{fullJobRecord.urls[0].url}}</strong> </p>
-
         <h4>Job Summary</h4>
-        <ngx-json-viewer [json]="fullJobRecord.summary" [expanded]="false"></ngx-json-viewer>
+        <p>Page URL: <strong>{{fullJobRecord.url}}</strong> </p>
+        <p>Website: <strong>{{fullJobRecord.website}}</strong> </p>
+        <p>Date: <strong>{{fullJobRecord.last_scrape_date | date:'MM/dd/yyyy'}}</strong></p>
+        <p>Status: <strong>{{fullJobRecord.status}}</strong> </p>
+        <p *ngIf="fullJobRecord.job_error">Error: <strong>{{fullJobRecord.job_error}}</strong> </p>
+
+<!--        <ngx-json-viewer [json]="fullJobRecord.extractedData" [expanded]="false"></ngx-json-viewer>-->
       </mat-card-content>
 
 
@@ -19,12 +23,21 @@
         <h3>Extracted Data</h3>
       </mat-card-title>
 
+      <p>XHR: <strong>{{fullJobRecord.extracted_data_summary.xhr}}</strong></p>
+      <p>Embedded Json: <strong>{{fullJobRecord.extracted_data_summary.embedded_json}}</strong></p>
+      <p>HTML Table: <strong>{{fullJobRecord.extracted_data_summary.html_table}}</strong></p>
+
       <mat-card-content>
-        <mat-tab-group>
-          <mat-tab *ngFor="let data of fullJobRecord.urls[0].extractedData; index as i" label="Object {{i}}">
-            <ngx-json-viewer [json]="data" [expanded]="false"></ngx-json-viewer>
+        <mat-tab-group *ngIf="fullJobRecord.extracted_data.length > 0">
+          <mat-tab *ngFor="let data of fullJobRecord.extracted_data; index as i" label="Object {{i}}">
+            <p>Type: <strong>{{data.type}}</strong> </p>
+            <p *ngIf="data.api_call">Api Call: <strong>{{data.api_call}}</strong> </p>
+            <ngx-json-viewer [json]="data.content" [expanded]="false"></ngx-json-viewer>
           </mat-tab>
         </mat-tab-group>
+        <h5 *ngIf="fullJobRecord.extracted_data.length === 0">
+          No data to display
+        </h5>
       </mat-card-content>
     </mat-card>
   </div>
