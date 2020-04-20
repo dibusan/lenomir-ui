@@ -1,6 +1,7 @@
 import {ChangeDetectionStrategy, Component, OnChanges, OnDestroy, OnInit, SimpleChanges} from '@angular/core';
-import {DataService} from '../../data/data.service';
+import {DataService} from '../../services/data/data.service';
 import {FormControl, NgForm, Validators} from '@angular/forms';
+import {UserService} from '../../services/user/user.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -12,12 +13,13 @@ export class DashboardComponent implements OnInit, OnChanges {
   lastJobSummaryForGaugeChart: any[];
   urlSubmissionMessage: string;
   loggedin: boolean;
-  constructor(private dataService: DataService) {
+  constructor(private dataService: DataService, private userService: UserService) {
     this.loggedin = false;
   }
 
   ngOnInit(): void {
     this.getLastJobSummary();
+    this.loggedin = this.userService.isLoggedIn();
   }
 
   ngOnChanges(changes: SimpleChanges): void {

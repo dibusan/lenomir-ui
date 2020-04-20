@@ -1,8 +1,8 @@
 import {Component, Input, OnDestroy, OnInit} from '@angular/core';
-import {DataService} from '../../data/data.service';
+import {DataService} from '../../services/data/data.service';
 import {Url} from 'url';
 import {UrlSummary} from '../../interfaces/UrlSummary';
-import {URL_SUMMARY} from '../../data/constant';
+import {URL_SUMMARY} from '../../services/data/constant';
 import {Observable, of, Subject} from 'rxjs';
 import {IntervalObservable} from 'rxjs-compat/observable/IntervalObservable';
 import 'rxjs-compat/add/operator/takeWhile';

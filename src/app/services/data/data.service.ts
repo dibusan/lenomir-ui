@@ -1,9 +1,9 @@
 import {Injectable} from '@angular/core';
-import {UrlSummary} from '../interfaces/UrlSummary';
+import {UrlSummary} from '../../interfaces/UrlSummary';
 import {Observable, of} from 'rxjs';
-import {WebsitesSummary} from '../interfaces/WebsiteSummary';
-import {JobSummary} from '../interfaces/JobSummary';
-import {JobRecord} from '../interfaces/JobRecord';
+import {WebsitesSummary} from '../../interfaces/WebsiteSummary';
+import {JobSummary} from '../../interfaces/JobSummary';
+import {JobRecord} from '../../interfaces/JobRecord';
 import {
   LAST_JOB_SUMMARY,
 } from './constant';

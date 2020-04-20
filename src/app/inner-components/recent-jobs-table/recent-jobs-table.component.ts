@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, ViewChild} from '@angular/core';
 import {DataSource} from '@angular/cdk/collections';
-import {DataService} from '../../data/data.service';
+import {DataService} from '../../services/data/data.service';
 import {Observable, Subscription} from 'rxjs';
 import {JobSummary} from '../../interfaces/JobSummary';
 import {DatePipe} from '@angular/common';

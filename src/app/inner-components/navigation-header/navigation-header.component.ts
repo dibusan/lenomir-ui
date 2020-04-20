@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {UserService} from '../../services/user/user.service';
 
 @Component({
   selector: 'app-navigation-header',
@@ -7,10 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavigationHeaderComponent implements OnInit {
 
-  loggedin = true;
-  constructor() { }
+  loggedin: boolean;
+  constructor(private userSerivice: UserService) {
+    this.loggedin = false;
+  }
 
   ngOnInit(): void {
+    this.loggedin = this.userSerivice.isLoggedIn();
   }
 
 }

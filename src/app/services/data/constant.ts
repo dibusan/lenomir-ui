@@ -1,5 +1,5 @@
-import {UrlSummary} from '../interfaces/UrlSummary';
-import {JobSummary} from '../interfaces/JobSummary';
+import {UrlSummary} from '../../interfaces/UrlSummary';
+import {JobSummary} from '../../interfaces/JobSummary';
 
 export let URL_SUMMARY: UrlSummary = {
   marketable: 3,

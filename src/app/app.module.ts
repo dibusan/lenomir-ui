@@ -13,7 +13,7 @@ import {NgxChartsModule} from '@swimlane/ngx-charts';
 import { PieChartWrapperComponent } from './inner-components/pie-chart-wrapper/pie-chart-wrapper.component';
 import { LinearGaugeWrapperComponent } from './inner-components/linear-gauge-wrapper/linear-gauge-wrapper.component';
 import { GaugeWrapperComponent } from './inner-components/gauge-wrapper/gauge-wrapper.component';
-import {DataService} from './data/data.service';
+import {DataService} from './services/data/data.service';
 import { RecentJobsTableComponent } from './inner-components/recent-jobs-table/recent-jobs-table.component';
 import {DatePipe} from '@angular/common';
 import { JobDetailsPageComponent } from './page-components/job-details-page/job-details-page.component';
