@@ -25,7 +25,8 @@ export class RecentJobsTableComponent implements OnInit {
         status: number;
       } */
 
-  displayedColumns: string[] = ['url', 'mime', 'created_at', 'updated_at', 'status'];
+  statuses: string[] = ['created', 'running', 'success', 'fail'];
+  displayedColumns: string[] = ['url', 'mime', 'created_at', 'status'];
   // displayedColumns: string[] = ['url', 'mime', 'created_at', 'updated_at', 'status'];
   constructor(
     private router: Router,
@@ -43,6 +44,17 @@ export class RecentJobsTableComponent implements OnInit {
   loadTableData() {
     this.dataService.getJobSummaryList().subscribe((summaryList: JobSummary[]) => {
       this.tableData = summaryList;
+
+      // tslint:disable-next-line:prefer-for-of
+      for (let i = 0; i < this.tableData.length; i++){
+        if (this.tableData[i].last_scrape_status === 1){
+          const duration = Date.now().valueOf() - new Date(this.tableData[i].created_at).valueOf();
+          console.log('duration = ' + duration);
+          if (duration > 3000){
+            this.tableData[i].last_scrape_status = 3;
+          }
+        }
+      }
     });
   }
 

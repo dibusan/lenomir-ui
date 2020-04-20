@@ -2,9 +2,23 @@ mat-card {
   width: 50%;
 }
 
-.testt {
-  //width: 100px;
-  //overflow: hidden;
-  //text-overflow: ellipsis;
-  //white-space: nowrap;
+.success {
+  background: #5cb85c;
+}
+
+.running {
+  background: #428bca;
+}
+
+.fail {
+  background: #d9534f;
+}
+
+.status-column-div {
+  text-align: center;
+  width: 60px;
+  padding: 10px;
+  border-style: solid;
+  border-radius: 10px;
+  border-width: 0px;
 }

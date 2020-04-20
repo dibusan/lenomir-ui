@@ -9,10 +9,24 @@
 
       <mat-card-content>
         <h4>Job Summary</h4>
+        <p>ID: <strong>{{fullJobRecord.id}}</strong></p>
         <p>Page URL: <strong>{{fullJobRecord.url}}</strong> </p>
         <p>Website: <strong>{{fullJobRecord.website}}</strong> </p>
         <p>Date: <strong>{{fullJobRecord.last_scrape_date | date:'MM/dd/yyyy'}}</strong></p>
-        <p>Status: <strong>{{fullJobRecord.status}}</strong> </p>
+
+        <div fxLayout="row" fxLayoutAlign="0 center" fxLayoutGap="20px">
+          <p>Status:</p>
+          <div
+            [ngClass]="['status-column-div', statuses[+fullJobRecord.status]]">
+            <strong>{{statuses[+fullJobRecord.status]|titlecase}}</strong>
+          </div>
+        </div>
+
+        <p >
+          Duration:
+          <span>{{fullJobRecord.duration}}</span>
+        </p>
+
         <p *ngIf="fullJobRecord.job_error">Error: <strong>{{fullJobRecord.job_error}}</strong> </p>
 
 <!--        <ngx-json-viewer [json]="fullJobRecord.extractedData" [expanded]="false"></ngx-json-viewer>-->

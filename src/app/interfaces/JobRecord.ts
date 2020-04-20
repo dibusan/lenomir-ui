@@ -5,6 +5,7 @@ export interface JobRecord {
   id: number;
   url: string;
   website: string;
+  duration: number;
   last_scrape_date: string;
   logs: string[];
   status: number;

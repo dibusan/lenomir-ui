@@ -9,7 +9,7 @@ import {ExtractedDataSummary, JobRecord} from '../../interfaces/JobRecord';
   styleUrls: ['./job-details-page.component.scss']
 })
 export class JobDetailsPageComponent implements OnInit {
-
+  statuses: string[] = ['created', 'running', 'success', 'fail'];
   fullJobRecord: JobRecord;
   jobId: number;
   constructor(
@@ -48,6 +48,17 @@ export class JobDetailsPageComponent implements OnInit {
           html_table: tableCount,
           xhr: xhrCount
         };
+        if (this.fullJobRecord.extracted_data.length === 0){
+          this.fullJobRecord.status = 3;
+        }else if (
+          this.fullJobRecord.status === 1 &&
+          this.fullJobRecord.extracted_data.length > 0){
+            this.fullJobRecord.status = 2;
+        }else if (this.fullJobRecord.status === 1){
+          const duration = Date.now().valueOf() - new Date(this.fullJobRecord.last_scrape_date).valueOf();
+          this.fullJobRecord.duration = duration;
+        }
+
       });
     });
   }

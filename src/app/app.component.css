@@ -1,0 +1,18 @@
+.success {
+  background: #5cb85c;
+}
+
+.running {
+  background: #428bca;
+}
+
+.fail {
+  background: #d9534f;
+}
+
+.status-column-div {
+  padding: 10px;
+  border-style: solid;
+  border-radius: 10px;
+  border-width: 0px;
+}
