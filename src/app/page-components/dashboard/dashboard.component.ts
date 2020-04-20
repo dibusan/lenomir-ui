@@ -11,7 +11,10 @@ export class DashboardComponent implements OnInit, OnChanges {
 
   lastJobSummaryForGaugeChart: any[];
   urlSubmissionMessage: string;
-  constructor(private dataService: DataService) {}
+  loggedin: boolean;
+  constructor(private dataService: DataService) {
+    this.loggedin = false;
+  }
 
   ngOnInit(): void {
     this.getLastJobSummary();

@@ -7,7 +7,7 @@
         <app-pie-chart-wrapper></app-pie-chart-wrapper>
       </div>
 
-      <div fxLayout="row" fxLayoutGap="20px"  fxLayout.gt-md="row"  fxLayoutAlign="space-around center" class="content">
+      <div *ngIf="loggedin" fxLayout="row" fxLayoutGap="20px"  fxLayout.gt-md="row"  fxLayoutAlign="space-around center" class="content">
         <div class="blocks">
           <form #f="ngForm" class="example-form" (ngSubmit)="startNewJob(f)">
             <mat-form-field appearance="outline">

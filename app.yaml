@@ -1,0 +1,10 @@
+service: lenomir-ui
+runtime: python27
+api_version: 1
+threadsafe: true
+handlers:
+  - url: /
+    static_files: dist/lenomir-ui/index.html
+    upload: dist/lenomir-ui/index.html
+  - url: /
+    static_dir: dist/lenomir-ui
