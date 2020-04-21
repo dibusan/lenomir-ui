@@ -1,1 +1,40 @@
-<p>landing works!</p>
+<div class="container">
+  <div fxLayout="rows" fxLayoutGap="100px">
+    <div class="text-details">
+      <h2>What this is:</h2>
+      <p>
+        {{whatThisIs}}
+      </p>
+    </div>
+
+    <div class="text-details">
+      <h2>How it works:</h2>
+      <ul>
+        <li *ngFor="let row of howItWorks"> {{row}}</li>
+      </ul>
+    </div>
+  </div>
+
+
+  <div fxLayout="row" fxLayoutGap="100px">
+    <div>
+      <h2>
+        System Architecture
+      </h2>
+      <img src="../../../assets/lenomir-design.png" height="500" width="800"/>
+    </div>
+
+<!--    <div>-->
+<!--      <h2>Links</h2>-->
+<!--      <a [routerLink]="row.link" *ngFor="let row of links">-->
+<!--        <mat-icon>{{row.icon}}</mat-icon>-->
+<!--        <span>{{row.label}}</span>-->
+<!--      </a>-->
+<!--      <mat-icon *ngFor="let row of links">{{row}}</mat-icon>-->
+
+<!--      <ul>-->
+<!--        <li *ngFor="let row of links"> {{row}}</li>-->
+<!--      </ul>-->
+<!--    </div>-->
+  </div>
+</div>
