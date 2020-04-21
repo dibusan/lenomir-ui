@@ -13,7 +13,7 @@ export class DashboardComponent implements OnInit, OnChanges {
   lastJobSummaryForGaugeChart: any[];
   urlSubmissionMessage: string;
   loggedin: boolean;
-  constructor(private dataService: DataService, private userService: UserService) {
+  constructor(private dataService: DataService, public userService: UserService) {
     this.loggedin = false;
   }
 

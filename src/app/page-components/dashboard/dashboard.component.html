@@ -7,7 +7,7 @@
         <app-pie-chart-wrapper></app-pie-chart-wrapper>
       </div>
 
-      <div *ngIf="loggedin" fxLayout="row" fxLayoutGap="20px"  fxLayout.gt-md="row"  fxLayoutAlign="space-around center" class="content">
+      <div *ngIf="userService.loggedIn" fxLayout="row" fxLayoutGap="20px" fxLayout.gt-md="row" fxLayoutAlign="space-around center" class="content">
         <div class="blocks">
           <form #f="ngForm" class="example-form" (ngSubmit)="startNewJob(f)">
             <mat-form-field appearance="outline">
@@ -28,11 +28,6 @@
 
     <div fxLayout="column">
       <app-recent-jobs-table></app-recent-jobs-table>
-    </div>
-
-
-    <div class="column-1">
-<!--      <app-gauge-wrapper [single]="lastJobSummaryForGaugeChart"></app-gauge-wrapper>-->
     </div>
   </div>
 </div>

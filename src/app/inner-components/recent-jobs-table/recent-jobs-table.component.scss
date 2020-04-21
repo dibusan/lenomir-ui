@@ -52,8 +52,7 @@ th, td {
   cursor: pointer;
 }
 
-//th, td {
-//  overflow: hidden !important;
-//  text-overflow: ellipsis !important;
-//  white-space: nowrap !important;
-//}
+.refresh-icon:hover {
+  background: #eeeeee;
+  cursor: pointer;
+}

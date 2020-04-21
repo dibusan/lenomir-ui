@@ -7,12 +7,13 @@ import {JobRecord} from '../../interfaces/JobRecord';
 import {
   LAST_JOB_SUMMARY,
 } from './constant';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {UserService} from '../user/user.service';
 
 @Injectable({
   providedIn: 'root',
 })export class DataService {
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private userService: UserService) {
   }
 
   getUrlSummary(): Observable<UrlSummary> {
@@ -46,8 +47,13 @@ import {HttpClient} from '@angular/common/http';
       ids: [],
       urls: [newEndpoint]
     };
-
-    this.http.post(apiUrl, body).subscribe((data) => {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+        Authorization: this.userService.token
+      })
+    };
+    this.http.post(apiUrl, body, httpOptions).subscribe((data) => {
       // tslint:disable-next-line:no-debugger
       debugger;
     }, (err) => {

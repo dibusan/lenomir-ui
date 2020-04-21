@@ -37,13 +37,13 @@
               <span class="label">Dashboard</span>
             </a>
           </li>
-          <li *ngIf="!loggedin">
+          <li *ngIf="!userService.loggedIn" (click)="openLoginDialog()">
             <a>
               <mat-icon class="icon">input</mat-icon>
               <span  class="label">Login</span>
             </a>
           </li>
-          <li *ngIf="loggedin">
+          <li *ngIf="userService.loggedIn" (click)="logout()">
             <a>
               <mat-icon class="icon">input</mat-icon>
               <span class="label">LogOut</span>

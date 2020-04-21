@@ -6,7 +6,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MaterialModule} from './material.module';
 import {FlexLayoutModule} from '@angular/flex-layout';
-import { NavigationHeaderComponent } from './inner-components/navigation-header/navigation-header.component';
+import {LoginDialogComponent, NavigationHeaderComponent} from './inner-components/navigation-header/navigation-header.component';
 import { DashboardComponent } from './page-components/dashboard/dashboard.component';
 import {AppRouters} from './app.routes';
 import {NgxChartsModule} from '@swimlane/ngx-charts';
@@ -21,6 +21,8 @@ import { NgxJsonViewerModule } from 'ngx-json-viewer';
 import {MatTabsModule} from '@angular/material/tabs';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
+import {MatDialogModule} from '@angular/material/dialog';
+import { LandingComponent } from './page-components/landing/landing.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,9 @@ import {HttpClientModule} from '@angular/common/http';
     LinearGaugeWrapperComponent,
     GaugeWrapperComponent,
     RecentJobsTableComponent,
-    JobDetailsPageComponent
+    JobDetailsPageComponent,
+    LoginDialogComponent,
+    LandingComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +48,8 @@ import {HttpClientModule} from '@angular/common/http';
     MatTabsModule,
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatDialogModule
   ],
   providers: [DataService, DatePipe],
   bootstrap: [AppComponent]

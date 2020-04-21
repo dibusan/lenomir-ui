@@ -41,9 +41,14 @@ export class RecentJobsTableComponent implements OnInit {
     // }, 1000);
   }
 
+  refreshData(){
+    this.loadTableData();
+  }
+
   loadTableData() {
     this.dataService.getJobSummaryList().subscribe((summaryList: JobSummary[]) => {
       this.tableData = summaryList;
+      console.log(this.tableData);
 
       // tslint:disable-next-line:prefer-for-of
       for (let i = 0; i < this.tableData.length; i++){

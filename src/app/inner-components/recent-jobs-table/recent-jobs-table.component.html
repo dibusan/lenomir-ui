@@ -6,7 +6,10 @@
         <h3>Recent Jobs</h3>
       </mat-card-title>
 
-      <p *ngIf="tableData">{{tableData.length}}</p>
+      <div fxLayout="row" fxLayoutAlign="0 center">
+        <p *ngIf="tableData">{{tableData.length}}</p>
+        <mat-icon class="refresh-icon" aria-hidden="false" aria-label="Refresh Data" (click)="refreshData()">refresh</mat-icon>
+      </div>
       <mat-card-content>
           <table mat-table [dataSource]="this.tableData" class="mat-elevation-z8">
 
